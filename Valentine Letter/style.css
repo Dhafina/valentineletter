@@ -1,0 +1,143 @@
+/* RESET */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Pixelify Sans", sans-serif;
+  background-image: url("heart-bg.jpg");
+  background-repeat: repeat;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow-y: auto;
+}
+
+/* ================= ENVELOPE ================= */
+
+#envelope-container {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  gap: 12px;
+}
+
+#envelope {
+  width: min(60vw, 200px);
+  animation: pulse 1.5s infinite;
+}
+
+.envelope-text {
+  font-size: clamp(14px, 4vw, 20px);
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+/* ================= LETTER CONTAINER ================= */
+
+#letter-container {
+  display: none;
+  position: fixed;
+  inset: 0;
+  padding: 24px 12px;
+  overflow-y: auto;
+
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* ================= LETTER WINDOW ================= */
+
+.letter-window {
+  width: 100%;
+  max-width: 800px;
+  min-height: 520px;
+  overflow-x: hidden;
+  overflow-y: visible;
+
+  padding: 150px 20px 40px;
+  text-align: center;
+
+  background-image: url("window.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: top center;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+
+  transform: scale(0.95);
+  opacity: 0;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.letter-window.open {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* ================= TEXT ================= */
+
+h1 {
+  margin: 0;
+  font-size: clamp(18px, 5vw, 30px);
+}
+
+.final-text {
+  display: none;
+  font-size: clamp(14px, 4vw, 22px);
+  line-height: 1.4;
+  padding: 10px 16px;
+  background-color: rgba(255, 240, 240, 0.6);
+  border-radius: 12px;
+}
+
+/* ================= CAT ================= */
+
+.cat {
+  width: min(60vw, 250px);
+  transition: width 0.3s ease;
+}
+
+.letter-window.final .cat {
+  width: min(45vw, 180px);
+}
+
+/* ================= BUTTONS ================= */
+
+.buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  width: min(32vw, 120px);
+  cursor: pointer;
+  user-select: none;
+}
+
+/* ================= MOBILE TWEAK ================= */
+
+@media (max-width: 480px) {
+  .letter-window {
+    padding-top: 130px;
+  }
+  .cat {
+    max-width: 200px;
+  }
+}
