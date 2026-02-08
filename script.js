@@ -9,6 +9,7 @@ const title = document.getElementById("letter-title");
 const catImg = document.getElementById("letter-cat");
 const buttons = document.getElementById("letter-buttons");
 const finalText = document.getElementById("final-text");
+const container = document.querySelector(".letter-window");
 
 /* OPEN LETTER */
 envelope.addEventListener("click", () => {
@@ -22,16 +23,19 @@ envelope.addEventListener("click", () => {
 
 /* NO BUTTON RUNS (MOBILE SAFE) */
 noBtn.addEventListener("mouseenter", () => {
-  const rect = noBtn.getBoundingClientRect();
-  const padding = 20;
+  const containerRect = container.getBoundingClientRect();
+  const btnRect = noBtn.getBoundingClientRect();
+  const padding = 10;
 
-  const maxX = window.innerWidth - rect.width - padding;
-  const maxY = window.innerHeight - rect.height - padding;
+  const maxX = containerRect.width - btnRect.width - padding;
+  const maxY = containerRect.height - btnRect.height - padding;
 
-  const x = Math.random() * (maxX - padding) - rect.left + padding;
-  const y = Math.random() * (maxY - padding) - rect.top + padding;
+  const x = Math.random() * maxX;
+  const y = Math.random() * maxY;
 
-  noBtn.style.transform = `translate(${x}px, ${y}px)`;
+  noBtn.style.position = "absolute";
+  noBtn.style.left = `${x}px`;
+  noBtn.style.top = `${y}px`;
 });
 
 

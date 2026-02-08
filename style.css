@@ -135,9 +135,22 @@ h1 {
 
 @media (max-width: 480px) {
   .letter-window {
-    padding-top: 130px;
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+    aspect-ratio: 3 / 4;
+
+    background-size: 100% 100%;
+    padding-top: 80px;
   }
+
   .cat {
-    max-width: 200px;
+    width: 180px;
+  }
+
+  .final-text {
+    font-size: 14px;
+    text-align: center;
   }
 }
+
